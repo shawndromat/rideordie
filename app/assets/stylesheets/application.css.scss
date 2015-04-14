@@ -1,0 +1,74 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require bootstrap
+ *= require main
+ *= require_self
+ */
+
+$light-blue: #c4cdcc;
+$light-light-blue: #e1e6e5;
+$navy: #101d32;
+
+body {
+  background-color: $light-light-blue;
+}
+
+.navbar-default {
+  background-color: transparent;
+  text-transform: uppercase;
+}
+
+.navbar-default .navbar-nav > li > a,
+.navbar-default .navbar-nav > li > a {
+	background-color: $light-light-blue;
+  font-weight: 300;
+	color: $navy;
+}
+
+#logo-circle {
+  background-color: #ffffff;
+  width: 450px;
+  height: 450px;
+  padding: 75px;
+  border-radius: 50%;
+  h1, h2 {
+    // font-weight: bold;
+    color: $navy;
+    text-transform: uppercase;
+  }
+
+  p {
+    color: $navy;
+  }
+
+  img {
+    width: 100px;
+  }
+}
+
+.container-row > h1 {
+  text-transform: uppercase;
+}
+
+.content-row {
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .container > .navbar-collapse {
+    width: 800px;
+    margin: auto;
+  }
+}
+
