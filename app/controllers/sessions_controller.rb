@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
   def create
     if password == ENV["PASSWORD"]
       login(password)
-      redirect_to root_url
+      redirect_to guests_index_url
     else
       render :new
     end
