@@ -68,10 +68,16 @@ body {
   text-align: center;
 }
 
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+  background-color: $light-blue;
+;
+}
+
 @media (min-width: 768px) {
   .container > .navbar-collapse {
     width: 800px;
     margin: auto;
   }
 }
+
 

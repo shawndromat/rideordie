@@ -11,20 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150414013425) do
+ActiveRecord::Schema.define(version: 20150427001824) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "guests", force: true do |t|
-    t.string  "name"
-    t.boolean "plus_one"
-    t.integer "party_id", null: false
+    t.string   "name"
+    t.integer  "party_id",   null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "parties", force: true do |t|
-    t.integer "primary_guest_id"
-    t.integer "max_guests"
+    t.integer  "max_guests"
+    t.string   "name",       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

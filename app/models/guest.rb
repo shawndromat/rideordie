@@ -1,10 +1,9 @@
 class Guest < ActiveRecord::Base
-  validate :ensure_name_or_plus_one
+  validates :party, presence: true
 
-  private
-  def ensure_name_or_plus_one
-    unless !!name ^ !!plus_one
-      errors[:base] <<  "Guest must be named or a plus one"
-    end
+  belongs_to :party
+
+  def plus_one?
+    !name?
   end
 end

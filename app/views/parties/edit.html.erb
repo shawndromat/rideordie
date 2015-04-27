@@ -1,0 +1,36 @@
+<div class="container admin">
+  <h2>Add or Edit Guests for party</h2>
+
+  <form class="form-inline">
+    <input type="hidden" name="_method" value="PATCH"/>
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"/>
+    <% @party.max_guests.times do |i| %>
+        <div class="row guest">
+          <div class="col-sm-1"><%= i + 1 %>.</div>
+          <div class="col-sm-6">
+            <% guest_name = @party.guests[i] ? @party.guests[i].name : "" %>
+            <input type="text" placeholder="Guest Name" name="party[guests_attributes][][name]" class="form-control" value="<%= guest_name %>"/>
+          </div>
+          This guest is a plus one <input type="checkbox" class="plus-one" name="party[guests_attributes][][plus_one]"/>
+        </div>
+    <% end %>
+    <input type="submit" class="btn btn-primary" value="Save guests"/>
+  </form>
+</div>
+
+<script type="text/javascript" charset="utf-8">
+    $(function () {
+        $(".guest").on("click", ".plus-one", function () {
+            var $plusOne = $(event.target);
+            var $input = $(event.currentTarget).find('input[name="party[guests_attributes][][name]"]');
+            if (!$plusOne.prop('checked')) {
+                $input.prop('disabled', false);
+                $input.prop('placeholder', 'Guest Name');
+            } else {
+                $input.prop('disabled', true);
+                $input.val("");
+                $input.prop("placeholder", "Plus one");
+            }
+        });
+    })
+</script>
