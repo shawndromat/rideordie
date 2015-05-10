@@ -1,0 +1,101 @@
+function initCanvas(){
+  var ctx = document.getElementById('triangles').getContext('2d');
+  ctx.canvas.width = window.outerWidth;
+  ctx.canvas.height = window.outerHeight;
+  var cW = ctx.canvas.width, cH = ctx.canvas.height;
+
+  var frameRate = 30,
+      addRate = 600,
+      counter = 0,
+      panes = 4;
+
+  var colors = [
+    [161, 146, 131],
+    [16, 29, 50],
+    [196, 205, 204],
+    [196, 205, 204]
+  ]
+
+  var triangles = [];
+
+  function randomColor() {
+    var index = Math.floor(Math.random() * colors.length);
+    var color = colors[index];
+    return "rgba(" + color.join(", ") + ", .75)";
+  }
+
+  function heartOptions() {
+    return {type: "heart"};
+  }
+
+  function triangleOptions() {
+    return {type: "triangle", c: randomColor()};
+  }
+
+  function addItem(){
+    var options = Math.random() < .1 ? heartOptions() : triangleOptions();
+    options.x = Math.floor(Math.random() * cW) + 1;
+    options.y = 0;
+    options.a = (Math.random() * 20) - 10;
+    options.s = Math.floor(Math.random() * panes) + 1;
+    options.r = options.s * 5;
+    triangles.push(options);
+  }
+
+  function draw(item) {
+    if (item.type == "heart") {
+      drawHeart(item);
+    } else if (item.type == "triangle") {
+      drawTriangle(item);
+    }
+  }
+
+  function drawHeart(item) {
+  }
+
+  function drawTriangle(item) {
+      ctx.fillStyle = item.c;
+      ctx.beginPath();
+      triangle(item.x, item.y += item.s*.4, item.r, item.a += item.s*.005);
+      ctx.fill();
+  }
+
+  function snow(){
+    if (counter % addRate == 0) {
+      addItem();
+      counter = 0;
+    }
+
+    for(var i = 0; i < triangles.length; i++){
+      var current = triangles[i];
+      draw(current);
+        if(triangles[i].y > cH){
+          triangles.splice(i,1);
+        }
+      }
+      counter += frameRate;
+    }
+  function animate(){
+    ctx.save();
+    ctx.clearRect(0, 0, cW, cH);
+    snow();
+    ctx.restore();
+  }
+  
+  function triangle(x, y, radius, startAngle) {
+    var a = (Math.PI * 2)/3;
+    ctx.save();
+    ctx.translate(x,y);
+    ctx.rotate(startAngle);
+    ctx.moveTo(radius,0);
+    for (var i = 1; i < 3; i++) {
+      ctx.lineTo(radius*Math.cos(a*i),radius*Math.sin(a*i));
+    }
+    ctx.closePath();
+    ctx.restore();
+  }
+  var animateInterval = setInterval(animate, 30);
+}
+window.addEventListener('load', function(event) {
+  initCanvas();
+});

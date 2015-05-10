@@ -20,6 +20,10 @@ $light-blue: #c4cdcc;
 $light-light-blue: #e1e6e5;
 $navy: #101d32;
 
+html, body {
+  min-height: 100%;
+}
+
 body {
   background-color: $light-light-blue;
 }
@@ -60,12 +64,25 @@ body {
   }
 }
 
+.section-container {
+  height: 100%;
+  padding: 5%;
+}
+
 .container-row > h1 {
   text-transform: uppercase;
 }
 
 .content-row {
   text-align: center;
+}
+
+.content-row ol {
+  text-align: left;
+}
+
+canvas {
+  position: fixed;
 }
 
 .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
