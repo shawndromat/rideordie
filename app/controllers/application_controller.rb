@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def logged_in?
+    return false unless session[:session_token]
     BCrypt::Password.new(session[:session_token]).is_password?(ENV["PASSWORD"])
   end
 

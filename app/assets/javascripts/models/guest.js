@@ -1,3 +1,3 @@
 RideOrDie.Models.Guest = Backbone.Model.extend({
-   urlRoot: "api/guests"
+   urlRoot: location.origin + "/api/guests"
 });

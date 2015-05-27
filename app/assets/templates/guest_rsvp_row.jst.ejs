@@ -1,0 +1,13 @@
+<div class="col-sm-6">
+  <% if (guest.get('name') != '') { %>
+    <p><%= guest.get('name') %> <a class="edit-name">Edit</a></p>
+  <% } else { %>
+    <input type="text" class="form-control" placeholder="Plus one - Please add guest's name"/>
+  <% } %>
+</div>
+<div class="col-sm-1">
+  <input type="radio" name="status" val="yes"/> Yes
+</div>
+<div class="col-sm-1">
+  <input type="radio" name="status" val="no"/> No
+</div>

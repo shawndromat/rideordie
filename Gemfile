@@ -18,6 +18,7 @@ gem 'newrelic_rpm'
 gem 'addressable'
 gem 'bcrypt'
 gem 'backbone-on-rails'
+gem 'friendly_id'
 
 gem 'spring',        group: :development
 

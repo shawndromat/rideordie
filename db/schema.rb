@@ -11,10 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150427001824) do
+ActiveRecord::Schema.define(version: 20150519000409) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "guest_rsvps", force: true do |t|
+    t.integer "rsvp_id",  null: false
+    t.integer "guest_id", null: false
+    t.boolean "status"
+  end
 
   create_table "guests", force: true do |t|
     t.string   "name"
@@ -28,6 +34,12 @@ ActiveRecord::Schema.define(version: 20150427001824) do
     t.string   "name",       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "rsvps", force: true do |t|
+    t.integer "party_id", null: false
+    t.text    "message"
+    t.string  "url"
   end
 
 end

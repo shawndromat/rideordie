@@ -20,7 +20,7 @@
             <a href="#party/<%= party.id %>/edit" class="btn btn-info">Edit</a>
           </td>
           <td class="col-sm-3"><%= party.get("max_guests") %></td>
-          <td class="col-sm-3">RSVP</td>
+          <td class="col-sm-3"><%= party.get("rsvp_status") %></td>
         </tr>
     <% })  %>
   </table>

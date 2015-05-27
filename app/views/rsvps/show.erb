@@ -4,7 +4,8 @@
 
 <script>
     $(document).ready(function(){
-        RideOrDie.initialize({role: "admin"});
+        RideOrDie.rsvpId = <%= @rsvp.id %>;
+        RideOrDie.initialize({role: "guest"});
     });
 </script>
 
