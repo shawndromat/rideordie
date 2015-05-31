@@ -20,7 +20,17 @@
             <a href="#party/<%= party.id %>/edit" class="btn btn-info">Edit</a>
           </td>
           <td class="col-sm-3"><%= party.get("max_guests") %></td>
-          <td class="col-sm-3"><%= party.get("rsvp_status") %></td>
+          <td class="col-sm-3">
+            <% if (party.get("rsvp_status") == "Not sent") { %>
+              <form class="send-invite" data-id="<%= party.get("id") %>">
+                <button type="submit" class="btn btn-success">Generate Invite</button>
+              </form>
+            <% } else if (party.get("rsvp_status") == "Sent") { %>
+              http://www.ride-or-die.com/rsvp/<%= party.get("rsvp_url") %>
+            <% } else { %>
+              <%= party.get("rsvp_status") %>
+            <% } %>
+            </td>
         </tr>
     <% })  %>
   </table>

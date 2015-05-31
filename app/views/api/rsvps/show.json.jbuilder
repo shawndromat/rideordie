@@ -1,4 +1,4 @@
-json.extract! @rsvp, :id
+json.extract! @rsvp, :id, :message
 json.party_name @rsvp.party.name
 json.guest_rsvps @rsvp.guest_rsvps do |guest_rsvp|
   json.extract! guest_rsvp, :id, :status

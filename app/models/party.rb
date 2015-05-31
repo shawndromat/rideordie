@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: parties
+#
+#  id         :integer          not null, primary key
+#  max_guests :integer
+#  name       :string(255)      not null
+#  created_at :datetime
+#  updated_at :datetime
+#
+
 class Party < ActiveRecord::Base
   validates :max_guests, :name, presence: true
 

@@ -6,7 +6,8 @@ RideOrDie.Views.GuestRsvpRow = Backbone.View.extend({
   template: JST["guest_rsvp_row"],
   events: {
     'blur input[type="text"]': "saveGuest",
-    'click .edit-name': "editName"
+    'click .edit-name': "editName",
+    'change input[type="radio"]': 'setGuestStatus'
   },
   render: function() {
       var content = this.template({
@@ -22,8 +23,10 @@ RideOrDie.Views.GuestRsvpRow = Backbone.View.extend({
     this.model.guest().save();
   },
   editName: function() {
-              console.log("jjj");
     this.model.guest().set({name: ""});
     this.render();
+  },
+  setGuestStatus: function (event) {
+    this.model.set('status', $(event.currentTarget).attr('val'));
   }
 });

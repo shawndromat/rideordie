@@ -1,4 +1,5 @@
 RideOrDie.Models.GuestRsvp = Backbone.Model.extend({
+  urlRoot: location.origin + "/api/guest_rsvps",
   guest: function () {
     if (!this._guest) {
       this._guest = new RideOrDie.Models.Guest();

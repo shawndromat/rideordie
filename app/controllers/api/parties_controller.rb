@@ -16,6 +16,12 @@ class Api::PartiesController < ApplicationController
     @party = Party.find(params[:id])
     render :show
   end
+
+  def invite
+    @party = Party.find(params[:id])
+    @party.invite
+    render json: {rsvp_url: @party.rsvp.url}
+  end
   
   private
   def party_params

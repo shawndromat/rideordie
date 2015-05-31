@@ -1,12 +1,28 @@
 <h1>RSVP - <%= rsvp.get("party_name") %></h1>
 <div class="row form-title">
   <div class="col-sm-6">
-    <h3>Invited Guests</h3>
+    <label>Invited Guests</label>
   </div>
   <div class="col-sm-4">
-    <h3>Attending?</h3>
+    <label>Attending?</label>
   </div>
 </div>
 <form class="rsvp-form">
   <div class="guests"></div>
+  <div class="row">
+    <div class="col-sm-4">
+      <label for="message-box">Message</label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-8">
+      <textarea id="message-box" class="col-sm-8 form-control"><%=
+        rsvp.get("message") %></textarea>
+    </div>
+  </div>
+  <div class="row">
+   <div class="col-sm-8">
+    <input type="submit" class="btn btn-info pull-right" id="save-rsvp" value="Save Rsvp" />
+   </div>
+  </div>
 </form>

@@ -6,8 +6,10 @@
   <% } %>
 </div>
 <div class="col-sm-1">
-  <input type="radio" name="status" val="yes"/> Yes
+  <% var checked = (guestRsvp.get("status") == true ? "checked" : "") %>
+  <input type="radio" name="status<%= guest.id %>" val="true" <%= checked %>/> Yes
 </div>
 <div class="col-sm-1">
-  <input type="radio" name="status" val="no"/> No
+  <% var checked = (guestRsvp.get("status") == false ? "checked" : "") %>
+  <input type="radio" name="status<%= guest.id %>" val="false" <%= checked %>/> No
 </div>
