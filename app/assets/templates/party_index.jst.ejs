@@ -1,37 +1,12 @@
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-md-5">
     <a class="btn btn-success" href="#party/new">Add a party</a>
   </div>
-  <div class="col-md-6">
+  <div class="col-md-7">
     <h3>Manage RSVPs</h3>
   </div>
 </div>
 <div class="row">
-  <table class="col-sm-12">
-    <tr>
-      <th class="col-sm-6">Party</th>
-      <th class="col-sm-3">Number of Guests</th>
-      <th class="col-sm-3">RSVP</th>
-    </tr>
-    <% parties.each(function(party) { %>
-        <tr>
-          <td class="col-sm-6">
-            <%= party.get("name") %>
-            <a href="#party/<%= party.id %>/edit" class="btn btn-info">Edit</a>
-          </td>
-          <td class="col-sm-3"><%= party.get("max_guests") %></td>
-          <td class="col-sm-3">
-            <% if (party.get("rsvp_status") == "Not sent") { %>
-              <form class="send-invite" data-id="<%= party.get("id") %>">
-                <button type="submit" class="btn btn-success">Generate Invite</button>
-              </form>
-            <% } else if (party.get("rsvp_status") == "Sent") { %>
-              http://www.ride-or-die.com/rsvp/<%= party.get("rsvp_url") %>
-            <% } else { %>
-              <%= party.get("rsvp_status") %>
-            <% } %>
-            </td>
-        </tr>
-    <% })  %>
+  <table class="parties-table col-sm-12">
   </table>
 </div>

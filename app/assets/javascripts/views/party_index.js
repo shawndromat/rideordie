@@ -3,20 +3,29 @@ RideOrDie.Views.PartyIndex = Backbone.View.extend({
       this.listenTo(this.collection, 'sync', this.render);
     },
     template: JST["party_index"],
-    events: {
-      "submit .send-invite": "sendInvite"
-    },
     render: function () {
         var content = this.template({parties: this.collection});
         this.$el.html(content);
+        this.attachPartyRows();
         return this;
     },
-    sendInvite: function (event) {
-      event.preventDefault();
-      var $form = $(event.currentTarget);
-      $.ajax({
-        method: "GET",
-        url: location.origin + "/api/parties/" + $form.data("id") + "/invite"
+    attachPartyRows: function () {
+      var $partiesTable = this.$('.parties-table');
+      $partiesTable.append(this.headerRow());
+      this.collection.each(function(party) {
+        console.log(party.get("rsvp_url"))
+        var view = new RideOrDie.Views.PartyRow({
+          model: party
+        });
+        $partiesTable.append(view.render().$el);
       });
+    },
+    headerRow: function () {
+    return "<tr>" +
+      '<th class="col-sm-5">Party</th>' + 
+      '<th class="col-sm-2">Number of Invitees</th>' + 
+      '<th class="col-sm-2">Number Attending</th>' + 
+      '<th class="col-sm-2">RSVP</th>' + 
+    "</tr>";
     }
 })
