@@ -57,22 +57,33 @@ body {
   background-color: #ffffff;
   width: 450px;
   height: 450px;
-  margin: 25px auto;
-  padding: 75px;
+  margin: 0 auto 15px;
   border-radius: 50%;
   h1, h2 {
     // font-weight: bold;
     color: $navy;
     text-transform: uppercase;
-  }
+  }    
+  padding: 80px;
+    h1, h2 {
+      margin-top: 15px;
+    }
+
+
 
   p {
     color: $navy;
+    margin: 25px auto 10px;
   }
 
   img {
     width: 100px;
   }
+}
+
+.headerwrap img.boat {
+  margin-top: 50px;
+  width: 150px;
 }
 
 .section-container {
