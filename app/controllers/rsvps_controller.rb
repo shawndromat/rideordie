@@ -1,7 +1,11 @@
 class RsvpsController < ApplicationController
-  def show
-    # @rsvp = Rsvp.find(params[:id])
-    @rsvp = Rsvp.find_by(url: params[:party])
-    render :show
+  def index
+    if params[:party]
+      @rsvp = Rsvp.find_by(url: params[:party])
+      render :show
+    else
+      @rsvps = Rsvp.all
+      render :index
+    end
   end
 end

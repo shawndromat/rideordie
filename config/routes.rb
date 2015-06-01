@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get 'login', to: 'sessions#new'
   resource :session, only: [:create, :destroy]
   resources :parties, only: [:index]
-  get 'rsvp', to: 'rsvps#show'
+  get 'rsvp', to: 'rsvps#index'
 
   namespace :api, defaults: {format: :json} do
     resources :parties

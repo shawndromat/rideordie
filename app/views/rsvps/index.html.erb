@@ -1,0 +1,67 @@
+<canvas id="triangles"></canvas>
+
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="glyphicon glyphicon-menu-hamburger" style="font-size:30px; color:#000;"></span>
+      </button>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a target="_blank" href="http://www.ride-or-die.com#home" class="smoothScroll">Home</a></li>
+        <li> <a target="_blank" href="http://www.ride-or-die.com#411" class="smoothScroll">411</a></li>
+        <li> <a target="_blank" href="http://www.ride-or-die.com#savethedate" class="smoothScroll">Save the Date</a></li>
+        <li> <a target="_blank" href="http://www.ride-or-die.com#outoftowners" class="smoothScroll">Out of Towners</a></li>
+        <li> <a target="_blank" href="http://www.ride-or-die.com#registry" class="smoothScroll">Registry</a></li>
+        <li> <a target="_blank" href="http://www.ride-or-die.com/rsvp" class="active smoothScroll">RSVP</a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>
+
+<div class="container section-container">
+  <div class="row content-row">
+    <div class="col-sm-8 col-sm-offset-2 content">
+      <form class="choose-party">
+        <label for="parties-list">To RSVP, please first select your party:</label>
+        <select name="party" id="parties-list">
+           <% @rsvps.each do |rsvp| %>
+             <option value="http://www.ride-or-die.com/rsvp?party=<%= rsvp.encoded_url %>"><%= rsvp.party.name %></option>
+           <% end %>
+        </select>
+
+        <input class="btn btn-success" type="submit" value="Go" />
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<script type="text/javascript" charset="utf-8">
+  $(document).ready(function(){
+    $('a[href^="#"]').on('click',function (e) {
+        e.preventDefault();
+
+        var target = this.hash;
+        var $target = $(target);
+
+        $('html, body').stop().animate({
+            'scrollTop': $target.offset().top
+        }, 900, 'swing', function () {
+            window.location.hash = target;
+        });
+    });
+
+    $(".choose-party").on("submit", function (event) {
+      event.preventDefault();
+      var url = $("#parties-list option:selected").val();
+      debugger
+      location.href = url;
+    });
+  });
+
+  window.addEventListener('load', function(event) {
+    initCanvas();
+  });
+</script>
