@@ -5,11 +5,11 @@
     <input type="text" class="form-control" placeholder="Plus one - Please add guest's name"/>
   <% } %>
 </div>
-<div class="col-sm-1">
+<div class="col-sm-3 radio-group">
   <% var checked = (guestRsvp.get("status") == true ? "checked" : "") %>
   <input type="radio" name="status<%= guest.id %>" val="true" <%= checked %>/> Yes
-</div>
-<div class="col-sm-1">
+<!-- </div> -->
+<!-- <div class="col&#45;sm&#45;1 radio&#45;group"> -->
   <% var checked = (guestRsvp.get("status") == false ? "checked" : "") %>
-  <input type="radio" name="status<%= guest.id %>" val="false" <%= checked %>/> No
+  <input class="no" type="radio" name="status<%= guest.id %>" val="false" <%= checked %>/> No
 </div>

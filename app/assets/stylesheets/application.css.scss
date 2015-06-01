@@ -118,7 +118,10 @@ canvas {
 
 .rsvp-form {
   margin-top: 15px;
-  .form-control {
+  p {
+    margin-bottom: 0;
+  }
+  .row {
     margin-bottom: 25px;
   }
 }
@@ -139,4 +142,12 @@ canvas {
 
 a {
   color: $red;
+}
+
+.radio-group {
+  white-space: no-wrap;
+}
+
+input[type="radio"].no {
+  margin-left: 15px;
 }
