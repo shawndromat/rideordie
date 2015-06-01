@@ -116,6 +116,23 @@ canvas {
   }
 }
 
+@media (max-width: 800px) {
+  #logo-circle {
+    height: 300px;
+    width: 300px;
+    padding: 50px;
+    p {
+      margin-top: 0;
+    }
+    h1, h2, p {
+      font-weight: regular;
+      font-size: 1.2em;
+      margin-top: 10px;
+    }
+
+  }
+}
+
 .rsvp-form {
   margin-top: 15px;
   p {
