@@ -13,7 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.serializejson
-//= require canvas_triangles
 //= require underscore
 //= require backbone
 //= require ride_or_die
