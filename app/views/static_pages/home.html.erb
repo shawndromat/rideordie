@@ -1,4 +1,11 @@
     <canvas id="triangles"></canvas>
+    <audio controls autoplay loop>
+    <source 
+          src="<%= audio_path("Shook Ones Instrumental.mp3") %>" 
+          type="audio/mp3"
+          >
+    </audio>
+
 
     <div class="navbar navbar-default navbar-fixed-top">
       <div class="container">
@@ -73,7 +80,7 @@
                 Please print in color, two-sided for best results.
               </p>
                 <img src="<%= image_url("origami boat 1.svg") %>" class="origami-boat" />
-                  <p><a target="_blank" href="#">Download and print template</a></p>
+                  <p><a target="_blank" href="<%= asset_path("origami_boat.pdf") %>">Download and print template</a></p>
                   <p><a target="_blank" href="#">Watch instructional video</a></p>
           </div>
         </div><!-- /row -->
