@@ -15,6 +15,7 @@ class Api::RsvpsController < ApplicationController
   end
 
   def rsvp_attributes
-    params.require(:rsvp).permit(:message)
+    params.require(:rsvp).permit(:message, :address_line_one, :address_line_two,
+                                :city, :state, :country, :postal_code)
   end
 end

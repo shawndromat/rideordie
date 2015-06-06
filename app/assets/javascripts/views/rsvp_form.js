@@ -1,8 +1,7 @@
 RideOrDie.Views.RsvpForm = Backbone.View.extend({
     template: JST["rsvp_form"],
     events: {
-      "submit .rsvp-form": "submitRsvp",
-      "blur #message-box": "saveMessage"
+      "submit .rsvp-form": "submitRsvp"
     },
     render: function () {
         var content = this.template({rsvp: this.model});
@@ -19,11 +18,6 @@ RideOrDie.Views.RsvpForm = Backbone.View.extend({
             $guestsRow.append(view.render().$el);
         });
     },
-    saveMessage: function (event) {
-      var $textarea = $(event.currentTarget);
-      this.model.set("message", $textarea.val());
-      this.model.save();
-    },
     submitRsvp: function(event) {
       event.preventDefault();
       var that = this;
@@ -31,11 +25,13 @@ RideOrDie.Views.RsvpForm = Backbone.View.extend({
         this.model.guestRsvps().each(function(guestRsvp, index) {
           var success;
           if (index == that.model.guestRsvps().length - 1) {
-          success = function () { location.href = location.origin};
+            var formContent = $(".rsvp-form").serializeJSON();
+            that.model.save(formContent);
+            success = function () { location.href = location.origin};
           } else {
             success = function () {};
           }
-          guestRsvp.save({},{success: success});
+          guestRsvp.save({}, {success: success});
         })
       } else {
         this.$(".guests").append(this.guestAlert());
