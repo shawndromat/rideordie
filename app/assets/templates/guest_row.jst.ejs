@@ -1,5 +1,6 @@
 <div class="col-sm-1"><%= index + 1 %>.</div>
 <div class="col-sm-6">
-  <input type="text" placeholder="Guest Name" name="guest[name]" class="form-control name-input" value="<%= guest.escape("name") %>"/>
+  <input type="hidden" name="order" value="index" />
+  <input type="text" placeholder="Guest Name" name="name" class="form-control name-input" value="<%= guest.escape("name") %>"/>
 </div>
 This guest is a plus one <input type="checkbox" class="plus-one"/>

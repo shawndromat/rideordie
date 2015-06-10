@@ -56,7 +56,7 @@ class Party < ActiveRecord::Base
         rsvp = Rsvp.new(party_id: id)
         rsvp.save
         guests.each_with_index do |guest|
-          guest_rsvp = rsvp.guest_rsvps.new(guest: guest)
+          guest_rsvp = rsvp.ordered_guests.new(guest: guest)
           guest_rsvp.save
         end
       end

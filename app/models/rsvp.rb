@@ -27,6 +27,10 @@ class Rsvp<ActiveRecord::Base
     URI.encode(self.url)
   end
 
+  def ordered_guests
+    guest_rsvps.includes(:guest).order("guests.order")
+  end
+
   private
   def generate_url
     self.url = party.name
