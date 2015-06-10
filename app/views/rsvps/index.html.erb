@@ -9,12 +9,12 @@
     </div>
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li><a target="_blank" href="http://www.ride-or-die.com#home" class="smoothScroll">Home</a></li>
-        <li> <a target="_blank" href="http://www.ride-or-die.com#411" class="smoothScroll">411</a></li>
-        <li> <a target="_blank" href="http://www.ride-or-die.com#savethedate" class="smoothScroll">Save the Date</a></li>
-        <li> <a target="_blank" href="http://www.ride-or-die.com#outoftowners" class="smoothScroll">Out of Towners</a></li>
-        <li> <a target="_blank" href="http://www.ride-or-die.com#registry" class="smoothScroll">Registry</a></li>
-        <li> <a target="_blank" href="http://www.ride-or-die.com/rsvp" class="active smoothScroll">RSVP</a></li>
+        <li><a href="http://www.ride-or-die.com#home" class="smoothScroll">Home</a></li>
+        <li> <a href="http://www.ride-or-die.com#411" class="smoothScroll">411</a></li>
+        <li> <a href="http://www.ride-or-die.com#savethedate" class="smoothScroll">Save the Date</a></li>
+        <li> <a href="http://www.ride-or-die.com#outoftowners" class="smoothScroll">Out of Towners</a></li>
+        <li> <a href="http://www.ride-or-die.com#registry" class="smoothScroll">Registry</a></li>
+        <li> <a href="#" class="active smoothScroll">RSVP</a></li>
       </ul>
     </div><!--/.nav-collapse -->
   </div>
@@ -26,12 +26,13 @@
       <form class="choose-party">
         <label for="parties-list">To RSVP, please first select your party:</label>
         <select name="party" id="parties-list">
+          <option>-</option>
            <% @rsvps.each do |rsvp| %>
              <option value="http://www.ride-or-die.com/rsvp?party=<%= rsvp.encoded_url %>"><%= rsvp.party.name %></option>
            <% end %>
         </select>
 
-        <input class="btn btn-success" type="submit" value="Go" />
+        <input class="btn btn-success" type="submit" value="Go" disabled/>
       </form>
     </div>
   </div>
@@ -52,6 +53,11 @@
             window.location.hash = target;
         });
     });
+
+    $('#parties-list').on('input', function(e) {
+        $('form input[type="submit"]').prop('disabled', false);
+      })
+
 
     $(".choose-party").on("submit", function (event) {
       event.preventDefault();
