@@ -4,7 +4,7 @@ class RsvpsController < ApplicationController
       @rsvp = Rsvp.find_by(url: params[:party])
       render :show
     else
-      @rsvps = Rsvp.all
+      @rsvps = Rsvp.includes(:party).order("parties.name")
       render :index
     end
   end
