@@ -21,12 +21,14 @@ RideOrDie.Views.RsvpForm = Backbone.View.extend({
     submitRsvp: function(event) {
       event.preventDefault();
       var that = this;
+      var formContent = $(".rsvp-form").serializeJSON();
+      that.model.set(formContent);
+      that.model.save();
+
       if(this.allGuestRsvpsAnswered()) {
         this.model.guestRsvps().each(function(guestRsvp, index) {
           var success;
           if (index == that.model.guestRsvps().length - 1) {
-            var formContent = $(".rsvp-form").serializeJSON();
-            that.model.save(formContent);
             success = function () { location.href = location.origin};
           } else {
             success = function () {};

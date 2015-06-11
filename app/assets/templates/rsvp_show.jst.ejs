@@ -1,0 +1,51 @@
+<h1>RSVP - <%= rsvp.get("party_name") %></h1>
+<div class="row form-title">
+  <div class="col-sm-6 col-sm-offset-2">
+    <label>Invited Guests</label>
+  </div>
+  <div class="col-sm-4">
+    <label>Attending?</label>
+  </div>
+</div>
+<div class="guests">
+  <% rsvp.guestRsvps().each(function (guestRsvp) { %>
+
+  <div class="row">
+<div class="col-sm-6 col-sm-offset-2">
+  <% guest = guestRsvp.guest() %>
+  <% if (guest.get('name') != '') { %>
+    <p><%= guest.get('name') %></p>
+  <% } else { %>
+    <p>Plus one</p>
+  <% } %>
+</div>
+<div class="col-sm-3 radio-group">
+  <% var checked = (guestRsvp.get("status") == true ? "checked" : "") %>
+  <input type="radio" name="status<%= guest.id %>" val="true" <%= checked %>/> Yes
+  <% var checked = (guestRsvp.get("status") == false ? "checked" : "") %>
+  <input class="no" type="radio" name="status<%= guest.id %>" val="false" <%= checked %>/> No
+    </div>
+  </div>
+  <% }) %>
+</div>
+  <div class="row">
+      <label class="col-sm-2 control-label" for="message-box">Message</label>
+    <div class="col-sm-8">
+      <p>
+      <%= rsvp.get("message") %>
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-2">
+      <label for="">Address</label>
+    </div>
+    <div class="col-sm-8">
+      <p><%= rsvp.get('address_line_one') %>,  <%= rsvp.get('address_line_two') %></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4 col-sm-offset-2">
+      <p><%= rsvp.get('city') %>,  <%=rsvp.get('state') %>  <%= rsvp.get('postal_code') %>  <%= rsvp.get('country') %></p>
+    </div>
+  </div>

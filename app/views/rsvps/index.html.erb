@@ -1,4 +1,11 @@
 <canvas id="triangles"></canvas>
+    <audio controls autoplay loop>
+    <source 
+          src="<%= audio_path("Shook Ones Instrumental.mp3") %>" 
+          type="audio/mp3"
+          >
+    </audio>
+
 
 <div class="navbar navbar-default navbar-fixed-top">
   <div class="container">
@@ -14,7 +21,7 @@
         <li> <a href="http://www.ride-or-die.com#savethedate" class="smoothScroll">Save the Date</a></li>
         <li> <a href="http://www.ride-or-die.com#outoftowners" class="smoothScroll">Out of Towners</a></li>
         <li> <a href="http://www.ride-or-die.com#registry" class="smoothScroll">Registry</a></li>
-        <li> <a href="#" class="active smoothScroll">RSVP</a></li>
+        <li> <a class="active">RSVP</a></li>
       </ul>
     </div><!--/.nav-collapse -->
   </div>
@@ -62,9 +69,20 @@
     $(".choose-party").on("submit", function (event) {
       event.preventDefault();
       var url = $("#parties-list option:selected").val();
-      debugger
       location.href = url;
     });
+      $("#rsvp").click(function (e) {
+          e.preventDefault();
+          var href = location.origin + "/rsvp?t=" + currentTime;
+          debugger
+          location.href = location.origin + "/rsvp?t=" + currentTime;
+      })
+    if(window.location.search.indexOf("?t=") >=0) {
+      $('audio').bind('canplay', function () {
+          debugger
+          this.currentTime = $.getQueryParameters().t;
+      })
+    }
   });
 
   window.addEventListener('load', function(event) {

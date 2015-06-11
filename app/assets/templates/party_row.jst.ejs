@@ -19,6 +19,7 @@
               <a href="http://www.ride-or-die.com/rsvp?party=<%= party.get('rsvp_url') %>">Rsvp link</a>
               
             <% } else { %>
-              <%= party.get("rsvp_status") %>
+              <%= party.get("rsvp_status") %> <a
+                href="#rsvps/<%= party.get('rsvp_id') %>" class="show_rsvp">Link</a>
             <% } %>
             </td>

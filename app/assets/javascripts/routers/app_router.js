@@ -7,7 +7,8 @@ RideOrDie.Routers.AppRouter = Backbone.Router.extend({
     routes: {
         "": "index",
         "party/new": "new",
-        "party/:id/edit": "edit"
+        "party/:id/edit": "edit",
+        "rsvps/:id":"show"
     },
     index: function () {
         var view = new RideOrDie.Views.PartyIndex({collection: RideOrDie.parties});
@@ -21,6 +22,16 @@ RideOrDie.Routers.AppRouter = Backbone.Router.extend({
         var party = RideOrDie.parties.getOrFetch(id);
         var view = new RideOrDie.Views.PartyForm({model: party});
         this.swapView(view);
+    },
+    show: function (id) {
+      var rsvp = new RideOrDie.Models.Rsvp({id: id});
+      var that = this;
+      rsvp.fetch({
+        success: function () {
+          var view = new RideOrDie.Views.RsvpShow({model: rsvp});
+          that.swapView(view);
+        }
+      });
     },
     swapView: function (view) {
         this._currentView && this._currentView.remove();
